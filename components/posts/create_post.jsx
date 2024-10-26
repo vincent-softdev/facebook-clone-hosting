@@ -1,10 +1,10 @@
 import react from "react"
 import CreatePostModal from "./create_post_modal"
 import Image from "next/image"
+import { user } from "@/constants/data"
 
 const CreatePost = () => {
     const [isModalOpen, setIsModalOpen] = react.useState(false)
-    const user = JSON.parse(sessionStorage.getItem('user'))
 
     const features = [
         {
@@ -63,7 +63,7 @@ const CreatePost = () => {
             {/* modal */}
             {
                 isModalOpen && (
-                    <CreatePostModal profile={profile} closeModal={closeModal}/>
+                    <CreatePostModal closeModal={closeModal}/>
                 )
             }
         </>

@@ -37,8 +37,6 @@ const SignUpPage = () => {
       const res = await createUserWithEmailAndPassword(email, password);
       console.log("User created:", res);
       
-      sessionStorage.setItem('user', true)
-      
       router.push("/sign-in");
     } catch (e) {
       console.error("Firebase error:", e);

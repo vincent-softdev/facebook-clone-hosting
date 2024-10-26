@@ -2,19 +2,17 @@
 
 import { db } from "@/app/firebase";
 import { doc, updateDoc, arrayUnion, getDocs, query, collection, where } from "firebase/firestore";
+import { user } from "@/constants/data";
 
-const FriendsCard = ({ user }) => {
-    const { name, email, image } = user; // Assuming each user has these properties
-    const userSession = JSON.parse(sessionStorage.getItem('user'))
-
-    console.log(session)
+const FriendsCard = ({_user}) => {
+    const { name, email, image } = _user; // Assuming each user has these properties
 
     const handleAddFriend = async () => {
         try {
             // Step 1: Find the current user by session email
             const userQuery = query(
                 collection(db, 'users'),
-                where('email', '==', userSession.email)
+                where('email', '==', user.email)
             );
 
             const querySnapshot = await getDocs(userQuery);

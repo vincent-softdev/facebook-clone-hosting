@@ -2,8 +2,9 @@
 import { Icons } from "@/icons/icons";
 import { IconImages } from "@/icons/icon_images";
 import { formatDistanceToNow, format } from 'date-fns';
+import React, { forwardRef } from 'react';
 
-const PostCard = ({ post }) => {
+const PostCard = forwardRef(({ post }, ref) => {
     const { content, date, email, name, image, postImage } = post;
 
     // Parse the date from the post object
@@ -15,7 +16,7 @@ const PostCard = ({ post }) => {
         : format(parsedDate, 'MMMM d, yyyy'); // e.g., "October 12, 2024"
 
     return (
-        <div className="post-card bg-white rounded-md shadow-md">
+        <div ref={ref} className="post-card bg-white rounded-md shadow-md">
             <div className="card__header px-3 pt-3 flex justify-between">
                 <div className="flex">
                     <div className="post-header--left mb-4 flex h-10">
@@ -92,10 +93,9 @@ const PostCard = ({ post }) => {
                         <p>Share</p>
                     </div>
                 </div>
-                {/* We will update here when we start to allow some comments */}
             </div>
         </div>
     );
-};
+});
 
 export default PostCard;

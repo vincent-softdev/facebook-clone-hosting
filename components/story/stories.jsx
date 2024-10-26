@@ -1,8 +1,8 @@
 import { Icons } from "@/icons/icons";
 import StoryCard from "./story_card";
+import { user } from "@/constants/data";
 
 const Stories = () => {
-    const user = JSON.parse(sessionStorage.getItem('user'))
 
     const storiesData = [
         {

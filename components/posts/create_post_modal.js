@@ -8,8 +8,9 @@ import { addDoc, collection, doc, updateDoc  } from "firebase/firestore"; // Imp
 import { serverTimestamp } from "firebase/firestore"; // Import Firestore's serverTimestamp
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import Spinner from "../spinner/spinner";
+import { user } from "@/constants/data";
 
-const CreatePostModal = ({ profile, closeModal }) => {
+const CreatePostModal = ({ closeModal }) => {
     const [text, setText] = useState("");
     const [postActivated, setPostActivated] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -73,11 +74,11 @@ const CreatePostModal = ({ profile, closeModal }) => {
     
         // Add post to Firestore
         const docRef = await addDoc(collection(db, 'posts'), {
-            name: profile.name,
-            email: profile.email,
+            name: user.name,
+            email: user.email,
             content: textAreaRef.current.value,
             date: serverTimestamp(),
-            image: profile.image
+            image: user.image
         });
     
         if (imageToPost) {
@@ -132,11 +133,11 @@ const CreatePostModal = ({ profile, closeModal }) => {
                 <div id="model_content" className="p-4 pb-0">
                     <div id="content_user-detail flex flex-row">
                         <div
-                            style={{ backgroundImage: `url(${profile.image})` }}
+                            style={{ backgroundImage: `url(${user.image})` }}
                             className="inline-block h-10 w-10 p-2 rounded-full bg-gray-200 bg-cover bg-center bg-no-repeat cursor-pointer hover:opacity-80 active:opacity-60"
                         ></div>
                         <div className="inline-block ml-3">
-                            <p className="font-semibold">{profile.name}</p>
+                            <p className="font-semibold">{user.name}</p>
                             <p className="flex items-center gap-1 font-semibold text-[13px] bg-gray-200 py-1 px-2 rounded-lg">
                                 <Icons.FriendIcon className="w-3 h-3" type="solid" />
                                 <span>Friends</span>

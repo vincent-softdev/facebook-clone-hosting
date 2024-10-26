@@ -4,24 +4,10 @@ import { signOut } from 'firebase/auth'
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from 'react';
 import { auth } from '@/app/firebase';
+import { user } from '@/constants/data';
 
 const Personal = ({ icons }) => {
     const router = useRouter()
-    const [user, setUser] = useState(null)
-
-    // Safely access sessionStorage only in the browser
-    useEffect(() => {
-        if (typeof window !== "undefined") {
-          const sessionData = sessionStorage.getItem("user");
-          if (sessionData) {
-            setUser(JSON.parse(sessionData));
-          }
-        }
-      }, []);
-
-    if(!user) {
-        return (<div>Loading...</div>)
-    }
 
     return (
         <ul className="flex gap-2">

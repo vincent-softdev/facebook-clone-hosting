@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Icons } from "@/icons/icons";
 import Image from "next/image";
+import { user } from "@/constants/data";
 
-const SideBarIcons = ({ profile }) => {
+const SideBarIcons = () => {
     const imageSrc = "https://static.xx.fbcdn.net/rsrc.php/v3/y-/r/cJdNYgqUyfE.png";
     const imageSrc2 = "https://static.xx.fbcdn.net/rsrc.php/v3/y0/r/y_JP1zKVuhp.png";
     const imageSrc3 = "https://static.xx.fbcdn.net/rsrc.php/v3/yP/r/kkZMFLIvmMQ.png";
@@ -43,8 +44,8 @@ const SideBarIcons = ({ profile }) => {
         <ul className="w-[281px]">
             <li className="flex gap-3 items-center h-11 hover:bg-gray-100 cursor-pointer p-2 rounded-md">
                 {/* Display profile image and name */}
-                <Image src={profile.image} alt="Profile" className="h-9 w-9 rounded-full" width={0} height={0} />
-                <div>{profile.name}</div>
+                <Image src={user.image} alt="Profile" className="h-9 w-9 rounded-full" width={0} height={0} />
+                <div>{user.name}</div>
             </li>
 
             {/* Render the icons, but limit to the first 3 when showAll is false */}
