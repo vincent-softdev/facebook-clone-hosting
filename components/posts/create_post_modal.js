@@ -23,11 +23,11 @@ const CreatePostModal = ({ closeModal }) => {
 
     // activate the image
     const activateImage = () => {
-        if(imageActivated == true) {
-            setImageToPost(null)
+        if (imageActivated) {
+            setImageToPost(null); // Clear the image if already activated
         }
-        setImageActivated((prev) => !prev)
-    }
+        setImageActivated((prev) => !prev);
+    };
 
     // Function to adjust font size and modal height based on input height
     const adjustSize = () => {
@@ -56,8 +56,8 @@ const CreatePostModal = ({ closeModal }) => {
     const addImageToPost = (e) => {
         const reader = new FileReader()
 
-        if(e.target.files[0]) {
-            reader.readAsDataURL(e.target.files[0])
+        if (e.target.files && e.target.files.length > 0) {
+            reader.readAsDataURL(e.target.files[0]);
         }
 
         reader.onload = (readerEvent) => {
