@@ -1,15 +1,8 @@
-'use client'
-import { useSession } from "next-auth/react";
 import { Icons } from "@/icons/icons";
 import StoryCard from "./story_card";
 
 const Stories = () => {
-    const { data: session } = useSession();
-
-    const profile = {
-        image: session.user.image,
-        name: session.user.name,
-    };
+    const user = JSON.parse(sessionStorage.getItem('user'))
 
     const storiesData = [
         {
@@ -38,19 +31,23 @@ const Stories = () => {
         }
     ]
 
+    if(!user) {
+        return <div>Loading....</div>
+    }
+
     return (
         <div className="flex flex-row gap-3 overflow-x-auto">
             {/* Create story card */}
             <div
                 style={{
-                    backgroundImage: `linear-gradient(to bottom, transparent calc(100% - 50px), white 70px), url(${profile.image})`,
+                    backgroundImage: `linear-gradient(to bottom, transparent calc(100% - 50px), white 70px), url(${user.image})`,
                     backgroundSize: "cover",
                     backgroundPosition: "top",
                 }}
                 className="border-[1px] shadow-md w-[140px] min-w-[140px] cursor-pointer h-[250px] rounded-xl bg-center text-black relative font-semibold p-3 pt-5 pb-2 justify-end items-center gap-1 flex flex-col bg-no-repeat transition-all object-cover"
             >
                 <Icons.Add className="w-10 h-10 rounded-full p-1 text-white bg-[#0966ff] border-[4px] border-white" />
-                <p className="text-[13px]">Create story</p>
+                <p className="text-[13px]">Create story A</p>
             </div>
 
             {/* Map over the stories */}

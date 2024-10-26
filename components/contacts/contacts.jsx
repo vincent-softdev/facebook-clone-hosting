@@ -3,25 +3,24 @@
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "@/app/firebase";
-import { useSession } from "next-auth/react";
 import { Icons } from "@/icons/icons";
 import Spinner from "../spinner/spinner";
 import Image from "next/image";
 
 const Contacts = () => {
-    const { data: session } = useSession(); // Get current user's session
+    const userSession = sessionStorage.getItem('user')
     const [friends, setFriends] = useState([]);
     const [loading, setLoading] = useState(true);
 
     // Step 1: Fetch the current user's friends by email
     useEffect(() => {
         const fetchFriends = async () => {
-            if (!session) return;
+            if (!userSession) return;
 
             try {
                 const userQuery = query(
                     collection(db, 'users'),
-                    where('email', '==', session.user.email)
+                    where('email', '==', userSession.email)
                 );
 
                 const querySnapshot = await getDocs(userQuery);
@@ -52,7 +51,7 @@ const Contacts = () => {
         };
 
         fetchFriends();
-    }, [session]);
+    }, []);
     
     if (loading) return (
         <div className="flex justify-center">

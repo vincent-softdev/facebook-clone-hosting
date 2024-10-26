@@ -2,11 +2,10 @@
 
 import { db } from "@/app/firebase";
 import { doc, updateDoc, arrayUnion, getDocs, query, collection, where } from "firebase/firestore";
-import { useSession } from "next-auth/react";
 
 const FriendsCard = ({ user }) => {
     const { name, email, image } = user; // Assuming each user has these properties
-    const { data: session } = useSession(); // Get current session
+    const userSession = JSON.parse(sessionStorage.getItem('user'))
 
     console.log(session)
 
@@ -15,7 +14,7 @@ const FriendsCard = ({ user }) => {
             // Step 1: Find the current user by session email
             const userQuery = query(
                 collection(db, 'users'),
-                where('email', '==', session.user.email)
+                where('email', '==', userSession.email)
             );
 
             const querySnapshot = await getDocs(userQuery);

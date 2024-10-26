@@ -1,24 +1,27 @@
-// SideBar.js
-"use client";
-
-import { useSession } from "next-auth/react";
 import SideBarIcons from './side_bar_icons';
 import Shortcuts from "./shortcuts";
+import { useState, useEffect } from 'react';
 
 const SideBar = () => {
-    const { data: session, status } = useSession();
+    const [userSession, setUser] = useState(null);
 
-    if (status === "loading") {
-        return <div>Loading...</div>;
-    }
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const storedUser = sessionStorage.getItem("user");
+            if (storedUser) {
+            setUser(JSON.parse(storedUser));
+            }
+        }
+    }, []);
 
-    if (!session) {
+
+    if (!userSession) {
         return <div>Please log in.</div>;
     }
 
     const profile = {
-        image: session.user.image,
-        name: session.user.name,
+        image: userSession?.image,
+        name: userSession?.name,
     };
 
     return (

@@ -5,24 +5,31 @@ import { collection, query, where, getDocs, updateDoc, doc, arrayUnion } from "f
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { db } from "@/app/firebase";
 import FriendsCard from "@/components/cards/friends/friends_card";
-import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 export default function Friends() {
-    const { data: session } = useSession(); // Get logged-in user's session
     const [filteredUsers, setFilteredUsers] = useState([]); // State to hold filtered users
     const [currentUserFriends, setCurrentUserFriends] = useState([]); // State to store current user's friends
     const [realtimeUsers] = useCollection(query(collection(db, 'users'))); // Get all users
+    const [userSession, setUserSession] = useState(null)
+
+    useEffect(() => {
+        setUserSession(JSON.parse(sessionStorage.getItem('user')))
+    }, [])
+
+    if(!userSession) {
+        return (<div>Loading...</div>)
+    }
 
     // Step 1: Fetch the current user’s friends when the component mounts
     useEffect(() => {
         const fetchCurrentUserFriends = async () => {
-            if (!session) return;
+            if (!userSession) return;
 
             // Query to find the current user based on session email
             const currentUserQuery = query(
                 collection(db, 'users'),
-                where('email', '==', session.user.email)
+                where('email', '==', userSession.email)
             );
 
             const querySnapshot = await getDocs(currentUserQuery);
@@ -33,27 +40,27 @@ export default function Friends() {
         };
 
         fetchCurrentUserFriends();
-    }, [session]);
+    }, []);
 
     // Step 2: Filter out users who are already friends
     useEffect(() => {
         if (realtimeUsers) {
             const users = realtimeUsers.docs
                 .map((doc) => ({ id: doc.id, ...doc.data() }))
-                .filter((user) => user.email !== session?.user.email) // Exclude the current user
+                .filter((user) => user.email !== userSession.email) // Exclude the current user
                 .filter((user) => !currentUserFriends.includes(user.email)); // Exclude existing friends
 
             setFilteredUsers(users); // Set the filtered list
         }
-    }, [realtimeUsers, currentUserFriends, session]);
+    }, [realtimeUsers, currentUserFriends]);
 
     // Function to handle adding a friend by email
     const handleAddFriend = async (friendEmail) => {
-        if (!session) return;
+        if (!userSession) return;
 
         const currentUserQuery = query(
             collection(db, 'users'),
-            where('email', '==', session.user.email)
+            where('email', '==', userSession.email)
         );
 
         const querySnapshot = await getDocs(currentUserQuery);

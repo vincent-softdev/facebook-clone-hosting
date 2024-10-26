@@ -2,8 +2,9 @@ import react from "react"
 import CreatePostModal from "./create_post_modal"
 import Image from "next/image"
 
-const CreatePost = ({profile}) => {
+const CreatePost = () => {
     const [isModalOpen, setIsModalOpen] = react.useState(false)
+    const user = JSON.parse(sessionStorage.getItem('user'))
 
     const features = [
         {
@@ -35,14 +36,14 @@ const CreatePost = ({profile}) => {
         <>
             <div className="bg-white w-full px-4 mb-4 pt-3 pb-[10px] rounded-lg">
                 <div className="h-10 flex gap-2 mb-3">
-                    <div style={{backgroundImage: `url(${profile.image})`}}
+                    <div style={{backgroundImage: `url(${user.image})`}}
                     className="h-10 w-10 p-2 rounded-full bg-gray-200 bg-cover bg-center bg-no-repeat cursor-pointer hover:opacity-80 active:opacity-60">
                     </div>
                     <div 
                         className="h-[100%] w-[100%] bg-[#f0f2f5] rounded-full px-3 py-2 text-gray-500 cursor-pointer"
                         onClick={openModal}
                         >
-                        <p>What`s on your mind, {profile.name}?</p>
+                        <p>What`s on your mind, {user.name}?</p>
                     </div>
                 </div>
                 <hr className="my-2 border-none h-[1px] bg-gray-200"/>

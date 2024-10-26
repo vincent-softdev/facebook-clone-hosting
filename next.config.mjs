@@ -11,7 +11,8 @@ const nextConfig = {
             "i.etsystatic.com",
             "encrypted-tbn0.gstatic.com",
             "*",
-            "static.wikia.nocookie.net"
+            "static.wikia.nocookie.net",
+            "your-image-url.com"
         ]
     },
 };
