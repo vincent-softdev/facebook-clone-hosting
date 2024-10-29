@@ -7,7 +7,7 @@ import { db } from "@/app/firebase";
 import { collection, query, orderBy, limit, startAfter, getDocs } from "firebase/firestore";
 import { user } from "@/constants/data";
 
-const POSTS_PER_PAGE = 1; // Number of posts to load per batch
+const POSTS_PER_PAGE = 10; // Number of posts to load per batch
 
 const Post = () => {
     const [posts, setPosts] = useState([]);

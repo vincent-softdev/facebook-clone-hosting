@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation"; // Import useRouter
 
 const IconList = ({ icons }) => {
-    const [activeIndex, setActiveIndex] = useState(null);
+    const [activeIndex, setActiveIndex] = useState(0);
     const router = useRouter(); // Initialize the router
 
     const handleIconClick = (index, path) => {
