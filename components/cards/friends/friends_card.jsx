@@ -34,7 +34,7 @@ const FriendsCard = ({_user}) => {
     };
 
     return (
-        <div className="w-full border-[1px] shadow-md min-w-[200px] h-[376px] rounded-xl bg-white text-black font-semibold flex flex-col">
+        <div className="w-full max-w-[300px] border-[1px] shadow-md min-w-[200px] h-[376px] rounded-xl bg-white text-black font-semibold flex flex-col">
             {/* Image section */}
             <div
                 style={{
@@ -42,7 +42,7 @@ const FriendsCard = ({_user}) => {
                     backgroundSize: "cover",
                     backgroundPosition: "top",
                 }}
-                className="h-[200px] w-full"
+                className="h-[200px] w-full rounded-t-xl"
             />
 
             {/* Content section */}

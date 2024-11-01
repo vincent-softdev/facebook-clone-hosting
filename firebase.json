@@ -7,7 +7,7 @@
       "**/node_modules/**"
     ],
     "frameworksBackend": {
-      "region": "asia-east1"
+      "region": "europe-west1"
     }
   },
   "emulators": {
@@ -18,8 +18,5 @@
       "enabled": true
     },
     "singleProjectMode": true
-  },
-  "storage": {
-    "rules": "storage.rules"
   }
 }

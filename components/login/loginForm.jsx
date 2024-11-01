@@ -33,14 +33,15 @@ const LoginForm = () => {
     <div className="grid place-items-center bg-[#f2f4f7]">
       <div className="h-[720px] flex flex-col gap-7 md:gap-9 lg:w-[980px] md:flex-row items-center">
         <div className="w-[400px] lg:w-[580px] pb-4 flex flex-col text-center pt-32px mt-10 md:mt-0 md:text-left md:block md:h-[300px]">
-          <img
-            src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg"
-            className="h-[106px] mb-0 w-auto m-[-28px]"
-            alt="facebook clone"
-          />
+          <p className="text-blue-600 font-bold text-[50px]">
+            Facebook Clone
+          </p>
           <h2 className="text-[24px]">
-            Facebook helps you connect and share with the people in your life.
+            This is not a facebook page, this is just a Facebook clone personal project used to demonstrate developer coding skills.
           </h2>
+          <p className="mt-[20px] text-red-400">
+            <strong className="text-red-600">Warning</strong>: Please do not use any username and password belonging to yourself. You can directly enter to homepage without login.
+          </p>
         </div>
         <div className="flex flex-col items-center">
           <form

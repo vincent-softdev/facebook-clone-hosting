@@ -9,8 +9,11 @@ export default function Home() {
         <div className="w-full flex flex-col items-center">
             <div className="mt-5 w-full 2xl:w-[1464px] flex justify-center gap-10">
                 <SideBar />
-                <div id="middle-home" className="flex flex-col overflow-hidden w-full max-w-[680px]">
+                <div id="middle-home" className="flex flex-col overflow-hidden gap-5 w-full max-w-[680px]">
                     <Stories />
+                    <div className="h-[100px] text-white p-4 bg-red-400">
+                        <strong>Warning</strong>: please do not enter any personal information inside the post as all other users can view it
+                    </div>
                     <Post />
                 </div>
                 <Contacts />
