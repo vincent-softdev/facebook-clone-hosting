@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
-import { auth } from "@/app/firebase"
+// import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
+// import { auth } from "@/app/firebase"
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
@@ -12,36 +12,37 @@ const SignUpPage = () => {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth)
+  // const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    if (password !== confirmPassword) {
-      setError("Passwords do not match!");
-      return;
-    }
+    router.push("/");
+    // if (password !== confirmPassword) {
+    //   setError("Passwords do not match!");
+    //   return;
+    // }
   
-    if (password.length < 6) {
-      setError("Password should be at least 6 characters.");
-      return;
-    }
+    // if (password.length < 6) {
+    //   setError("Password should be at least 6 characters.");
+    //   return;
+    // }
   
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setError("Invalid email address.");
-      return;
-    }
+    // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // if (!emailRegex.test(email)) {
+    //   setError("Invalid email address.");
+    //   return;
+    // }
   
-    try {
-      const res = await createUserWithEmailAndPassword(email, password);
-      console.log("User created:", res);
+    // try {
+    //   const res = await createUserWithEmailAndPassword(email, password);
+    //   console.log("User created:", res);
       
-      router.push("/sign-in");
-    } catch (e) {
-      console.error("Firebase error:", e);
-      setError(e.message);  // Show Firebase error message
-    }
+    //   router.push("/sign-in");
+    // } catch (e) {
+    //   console.error("Firebase error:", e);
+    //   setError(e.message);  // Show Firebase error message
+    // }
   };
   
 

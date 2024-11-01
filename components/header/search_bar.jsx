@@ -2,7 +2,6 @@
 // components/SearchBar.jsx
 import { Icons } from "@/icons/icons"; // Adjust import as necessary
 import { useState } from "react";
-import Image from "next/image";
 
 const SearchBar = () => {
     const [triggerInput, setTriggerInput] = useState(false)
@@ -17,7 +16,7 @@ const SearchBar = () => {
 
     return (
         <div className="flex items-center">
-            {!triggerInput && <Image src={"http://links.papareact.com/5me"} alt="" width={40} height={40} layout="fixed"/>}
+            {!triggerInput && <img src={"https://i.pinimg.com/originals/66/0b/cb/660bcb3e9408cfa1747d2d6e4c8c4526.png"} alt="" className="w-[4rem] h-10" layout="fixed"/>}
             {
                 triggerInput && (
                     <button onClick={turnInputOff} className="text-gray-600 mr-2">

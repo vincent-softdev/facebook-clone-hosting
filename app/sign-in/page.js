@@ -1,5 +1,3 @@
-"use client"; // Enable client-side rendering
-
 import LoginForm from "@/components/login/loginForm"
 
 export default function Page() {

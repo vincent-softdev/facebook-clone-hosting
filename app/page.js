@@ -1,5 +1,3 @@
-'use client';
-
 import SideBar from "@/components/side_bar/side_bar";
 import Stories from "@/components/story/Stories";
 import Contacts from "@/components/contacts/Contacts";

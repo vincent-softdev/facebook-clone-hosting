@@ -1,6 +1,5 @@
 import react from "react"
 import CreatePostModal from "./create_post_modal"
-import Image from "next/image"
 import { user } from "@/constants/data"
 
 const CreatePost = () => {
@@ -52,7 +51,7 @@ const CreatePost = () => {
                         features.map((item, idx) => {
                             return (
                                 <div key={idx} className="hover:bg-[#f0f2f5] hover:rounded-lg cursor-pointer p-2 gap-2 grow flex justify-center items-center font-semibold text-gray-500">
-                                    <Image src={item.icon_src} className="w-6 h-6" alt={item.name + ` icon`} width={0} height={0}/>
+                                    <img src={item.icon_src} className="w-6 h-6" alt={item.name + ` icon`}/>
                                     <p>{item.name}</p>
                                 </div>
                             )

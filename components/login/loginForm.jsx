@@ -2,24 +2,24 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
-import { auth } from "@/app/firebase";
+// import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
+// import { auth } from "@/app/firebase";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth)
+  // const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await signInWithEmailAndPassword(email, password)
+      // Turn off sign in
+      // const res = await signInWithEmailAndPassword(email, password)
 
-      console.log({res})
+      // console.log({res})
       
       setEmail('')
       setPassword('')
@@ -33,10 +33,8 @@ const LoginForm = () => {
     <div className="grid place-items-center bg-[#f2f4f7]">
       <div className="h-[720px] flex flex-col gap-7 md:gap-9 lg:w-[980px] md:flex-row items-center">
         <div className="w-[400px] lg:w-[580px] pb-4 flex flex-col text-center pt-32px mt-10 md:mt-0 md:text-left md:block md:h-[300px]">
-          <Image
+          <img
             src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg"
-            height={0}
-            width={0}
             className="h-[106px] mb-0 w-auto m-[-28px]"
             alt="facebook clone"
           />

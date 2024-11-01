@@ -2,7 +2,6 @@
 
 import { signOut } from 'firebase/auth'
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from 'react';
 import { auth } from '@/app/firebase';
 import { user } from '@/constants/data';
 
