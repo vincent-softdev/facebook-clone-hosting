@@ -31,8 +31,13 @@ This application allows users to add new friends, login, sign up, create new pos
 - Firebase account
 
 ### Demo
+<img width="1482" alt="Screenshot 2024-11-01 at 10 16 52 am" src="https://github.com/user-attachments/assets/ac7f2179-a98f-409f-99cf-a21a9fde1fb8">
+<img width="1450" alt="Screenshot 2024-11-01 at 10 17 11 am" src="https://github.com/user-attachments/assets/58cb571c-13fa-47d1-b432-b81388dcf684">
+<img width="1467" alt="Screenshot 2024-11-01 at 10 17 23 am" src="https://github.com/user-attachments/assets/029d1faa-9238-4603-aefe-eccb22eb452d">
+<img width="1434" alt="Screenshot 2024-11-01 at 10 17 31 am" src="https://github.com/user-attachments/assets/b69698bb-9d9a-4fae-b8c0-f562597a1c0d">
+<img width="1460" alt="Screenshot 2024-11-01 at 10 17 40 am" src="https://github.com/user-attachments/assets/4f1b3584-5089-4631-81a2-af3bd7175f6b">
 
-https://facebook-clone-hosting.web.app
+
 
 ### Installation
 
