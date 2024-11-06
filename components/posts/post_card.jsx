@@ -16,7 +16,7 @@ const PostCard = forwardRef(({ post }, ref) => {
         : format(parsedDate, 'MMMM d, yyyy'); // e.g., "October 12, 2024"
 
     return (
-        <div ref={ref} className="post-card bg-white rounded-md shadow-md">
+        <div ref={ref} className="post-card bg-white rounded-md shadow-md text-black">
             <div className="card__header px-3 pt-3 flex justify-between">
                 <div className="flex">
                     <div className="post-header--left mb-4 flex h-10">

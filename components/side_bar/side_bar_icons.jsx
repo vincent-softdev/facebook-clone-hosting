@@ -42,7 +42,7 @@ const SideBarIcons = () => {
     };
 
     return (
-        <ul className="w-[281px]">
+        <ul className="w-[281px] text-black">
             <li className="flex gap-3 items-center h-11 hover:bg-gray-100 cursor-pointer p-2 rounded-md">
                 {/* Display profile image and name */}
                 <img src={user.image} alt="Profile" className="h-9 w-9 rounded-full" />

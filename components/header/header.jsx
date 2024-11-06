@@ -25,7 +25,7 @@ const Header = () => {
     return (
         <>
             {!hideHeader ? (
-                <div className="flex sticky z-50 bg-white items-center p-2 px-5 shadow-md justify-between">
+                <div className="flex sticky z-50 bg-white items-center p-2 px-5 shadow-md justify-between text-black">
                     {/* Left */}
                     <SearchBar />
                     {/* center */}
