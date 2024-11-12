@@ -176,7 +176,7 @@ const CreatePostModal = ({ closeModal }) => {
                     ) : (
                         <>
                             <div 
-                                className="pl-4 max-h-[45vh] w-full overflow-y-scroll"
+                                className="px-4 max-h-[45vh] w-full overflow-y-scroll"
                                 style={{
                                     paddingLeft: "1rem",
                                     paddingBottom: "1rem",
