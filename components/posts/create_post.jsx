@@ -33,7 +33,7 @@ const CreatePost = () => {
 
     return (
         <>
-            <div className="bg-white w-full px-4 mb-4 pt-3 pb-[10px] rounded-lg">
+            <div className="bg-white w-full px-4 pt-3 pb-[10px] rounded-lg">
                 <div className="h-10 flex gap-2 mb-3">
                     <div style={{backgroundImage: `url(${user.image})`}}
                     className="h-10 w-10 p-2 rounded-full bg-gray-200 bg-cover bg-center bg-no-repeat cursor-pointer hover:opacity-80 active:opacity-60">
