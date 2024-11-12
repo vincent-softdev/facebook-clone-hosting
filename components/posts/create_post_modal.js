@@ -147,10 +147,10 @@ const CreatePostModal = ({ closeModal }) => {
                 </div>
                 <hr className="border-none h-[1px] bg-gray-200" />
                 <div className="py-4 pb-0 model_content">
-                    <div class="content_user-detail flex flex-row px-4">
+                    <div class="content_user-detail mb-2 flex flex-row px-4">
                         <div
                             style={{ backgroundImage: `url(${user.image})` }}
-                            className="inline-block h-10 w-10 p-2 rounded-full bg-gray-200 bg-cover bg-center bg-no-repeat cursor-pointer hover:opacity-80 active:opacity-60"
+                            className="inline-block h-[52px] w-[52px] p-2 rounded-full bg-gray-200 bg-cover bg-center bg-no-repeat cursor-pointer hover:opacity-80 active:opacity-60"
                         ></div>
                         <div className="inline-block ml-3">
                             <p className="font-semibold">{user.name}</p>
