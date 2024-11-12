@@ -9,6 +9,8 @@ import { serverTimestamp } from "firebase/firestore"; // Import Firestore's serv
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import Spinner from "../spinner/spinner";
 import { user } from "@/constants/data";
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import { postBackgroundColor } from "@/constants/data_color";
 
 const CreatePostModal = ({ closeModal }) => {
     const [text, setText] = useState("");
@@ -20,6 +22,14 @@ const CreatePostModal = ({ closeModal }) => {
     const textAreaRef = useRef(null);
     const filepickerRef = useRef(null);
     const [imageToPost, setImageToPost] = useState(null)
+    const [colorList, setColorList] = useState(true);
+    const [textareaColor, setTextAreaColor] = useState("#ffffff")
+
+    // set color for textarea
+    const activateTextAreaColor = (color) => {
+        console.log('text area color: ' + color)
+        setTextAreaColor(color)
+    }
 
     // activate the image
     const activateImage = () => {
@@ -28,6 +38,12 @@ const CreatePostModal = ({ closeModal }) => {
         }
         setImageActivated((prev) => !prev);
     };
+
+    // This will use to activate the color
+    const activateColorList = () => {
+        // console.log('hello')
+        setColorList((prev) => !prev);
+    }
 
     // Function to adjust font size and modal height based on input height
     const adjustSize = () => {
@@ -130,8 +146,8 @@ const CreatePostModal = ({ closeModal }) => {
                     </button>
                 </div>
                 <hr className="border-none h-[1px] bg-gray-200" />
-                <div id="model_content" className="p-4 pb-0">
-                    <div id="content_user-detail flex flex-row">
+                <div className="py-4 pb-0 model_content">
+                    <div class="content_user-detail flex flex-row px-4">
                         <div
                             style={{ backgroundImage: `url(${user.image})` }}
                             className="inline-block h-10 w-10 p-2 rounded-full bg-gray-200 bg-cover bg-center bg-no-repeat cursor-pointer hover:opacity-80 active:opacity-60"
@@ -159,7 +175,13 @@ const CreatePostModal = ({ closeModal }) => {
                         </div>
                     ) : (
                         <>
-                            <div className="max-h-[45vh] w-full overflow-scroll custom-scrollbar">
+                            <div 
+                                className="px-4 max-h-[45vh] w-full overflow-scroll custom-scrollbar"
+                                style={{
+                                    padding: "1rem",
+                                    backgroundColor: textareaColor != "#ffffff" && textLine < 4 ? textareaColor : "white",
+                                }}
+                            >
                                 <textarea
                                     ref={textAreaRef}
                                     className={`w-full h-full mt-3 p-2 bg-transparent min-h-[100px] border-none outline-none resize-none`}
@@ -170,11 +192,34 @@ const CreatePostModal = ({ closeModal }) => {
                                     style={{
                                         fontSize: `${fontSize}px`,
                                         lineHeight: "1.2",
+                                        textAlign: textareaColor != "#ffffff" && textLine < 4 ? "center" : "start",
+                                        color: textareaColor != "#ffffff" && textLine < 4 ? "white" : "black",
                                         height: `${textLine * fontSize + 20 + ((textLine * fontSize) > 270 ? (textLine * fontSize) > 300 ? 50 : 45 : 30)}px`,
                                     }} // Adjust textarea styles
                                 />
-                                <div className={`h-[40px] mb-4 flex items-center ${!(textLine < 4 && !imageActivated) ? "justify-end" : "justify-between"} `}>
-                                    {(textLine < 4 && !imageActivated) && <IconImages.ColorfulTextIcon className="h-full" />}
+                                <div className={`h-[40px] flex items-center ${!(textLine < 4 && !imageActivated) ? "justify-end" : "justify-between"} `}>
+                                    {(textLine < 4 && !imageActivated) && colorList && <button className="h-10" onClick={activateColorList}><IconImages.ColorfulTextIcon className="h-full cursor-pointer" /></button>}
+                                    {
+                                        !colorList && textLine < 4 && 
+                                        <div className="flex gap-2">
+                                            <button onClick={activateColorList} className="bg-[#c9ccd1] w-9 h-9 pr-1 rounded-lg flex justify-center items-center">
+                                                <ArrowBackIosNewIcon />
+                                            </button>
+                                            {
+                                                postBackgroundColor.map((item, idx) => {
+                                                    return (
+                                                        <button key={idx} onClick={() => activateTextAreaColor(item.color)} className="w-9 h-9 rounded-lg" 
+                                                            style={{
+                                                                backgroundColor: (item.color == textareaColor && item.color == "#ffffff") ? "#f2f4f7" : item.color,
+                                                                border: item.color == textareaColor ? "2px solid #fff" : "none",
+                                                                boxShadow: item.color == textareaColor ? "0px 0px 2px 0px": "none"
+                                                                }}>
+                                                        </button>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                    }
                                     <IconImages.SmillingEmogi className="w-6 h-7 opacity-70" />
                                 </div>
                                 {
@@ -221,7 +266,7 @@ const CreatePostModal = ({ closeModal }) => {
                                 }
                             </div>
 
-                            <div className="h-[60px] flex border-gray-300 rounded-md border-[1px] px-4 font-semibold justify-between">
+                            <div className="h-[60px] mx-4 flex border-gray-300 rounded-md border-[1px] px-4 font-semibold justify-between">
                                     <div className="h-full flex items-center">
                                         Add to your post
                                     </div>
@@ -236,17 +281,19 @@ const CreatePostModal = ({ closeModal }) => {
                                         <IconImages.ListMoreIcon className="w-6 h-6" />
                                     </div>
                                 </div>
-                            <button
-                                className={`w-full mt-3 py-[6px] p-1 px-3 rounded-md font-semibold ${
-                                    postActivated
-                                        ? "bg-blue-600 text-white opacity-100 cursor-pointer"
-                                        : "bg-gray-400 opacity-30 cursor-not-allowed"
-                                }`}
-                                disabled={!postActivated}
-                                onClick={sendPost}
-                            >
-                                {loading ? 'Posting...' : 'Post'}
-                            </button>
+                            <div className="px-4">
+                                <button
+                                    className={`w-full mt-3 py-[6px] p-1 px-3 rounded-md font-semibold ${
+                                        postActivated
+                                            ? "bg-blue-600 text-white opacity-100 cursor-pointer"
+                                            : "bg-gray-400 opacity-30 cursor-not-allowed"
+                                    }`}
+                                    disabled={!postActivated}
+                                    onClick={sendPost}
+                                >
+                                    {loading ? 'Posting...' : 'Post'}
+                                </button>
+                            </div>
                         </>
                     )}
                     
