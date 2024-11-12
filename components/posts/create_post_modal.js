@@ -120,7 +120,7 @@ const CreatePostModal = ({ closeModal }) => {
     };
 
     return (
-        <div className="fixed inset-0 py-14 px-6 z-50 flex items-center justify-center">
+        <div className="text-black fixed inset-0 py-14 px-6 z-50 flex items-center justify-center">
             {/* Modal background */}
             <div>
                 <div
@@ -147,10 +147,10 @@ const CreatePostModal = ({ closeModal }) => {
                 </div>
                 <hr className="border-none h-[1px] bg-gray-200" />
                 <div className="py-4 pb-0 model_content">
-                    <div class="content_user-detail flex flex-row px-4">
+                    <div class="content_user-detail flex flex-row px-4 mb-4">
                         <div
                             style={{ backgroundImage: `url(${user.image})` }}
-                            className="inline-block h-10 w-10 p-2 rounded-full bg-gray-200 bg-cover bg-center bg-no-repeat cursor-pointer hover:opacity-80 active:opacity-60"
+                            className="inline-block h-[52px] w-[52px] p-2 rounded-full bg-gray-200 bg-cover bg-center bg-no-repeat cursor-pointer hover:opacity-80 active:opacity-60"
                         ></div>
                         <div className="inline-block ml-3">
                             <p className="font-semibold">{user.name}</p>
@@ -176,15 +176,16 @@ const CreatePostModal = ({ closeModal }) => {
                     ) : (
                         <>
                             <div 
-                                className="px-4 max-h-[45vh] w-full overflow-scroll custom-scrollbar"
+                                className="pl-4 max-h-[45vh] w-full overflow-y-scroll"
                                 style={{
-                                    padding: "1rem",
+                                    paddingLeft: "1rem",
+                                    paddingBottom: "1rem",
                                     backgroundColor: textareaColor != "#ffffff" && textLine < 4 ? textareaColor : "white",
                                 }}
                             >
                                 <textarea
                                     ref={textAreaRef}
-                                    className={`w-full h-full mt-3 p-2 bg-transparent min-h-[100px] border-none outline-none resize-none`}
+                                    className={`w-full h-full mt-3 p-2 overflow-hidden bg-transparent min-h-[100px] border-none outline-none resize-none`}
                                     rows={2}
                                     placeholder="What's on your mind?"
                                     value={text}
