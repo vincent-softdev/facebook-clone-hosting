@@ -9,7 +9,7 @@ const SmillingEmogi = (props) => {
     const url = "https://static.xx.fbcdn.net/rsrc.php/v3/yt/r/9nFPWhKId_-.png"
 
     return (
-        <i className={props.className} style={{backgroundImage: `url(${url})`, backgroundSize: `33px 214px`, backgroundRepeat: `no-repeat`, display: `inline-block`, backgroundPosition: `0px -33px`}}>
+        <i className={props.className} style={{backgroundImage: `url(${url})`, backgroundSize: `33px 214px`, backgroundRepeat: `no-repeat`, display: `inline-block`, backgroundPosition: `0px -31px`}}>
 
         </i>
     )
