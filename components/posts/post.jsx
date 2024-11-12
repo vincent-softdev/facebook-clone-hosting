@@ -69,7 +69,7 @@ const Post = () => {
     if (!user) return <SkeletonPostCard />; // Use skeleton loader if session is unavailable
 
     return (
-        <div className="mt-4">
+        <div>
             <CreatePost />
             {/* Posts */}
             <div className="flex flex-col gap-4">

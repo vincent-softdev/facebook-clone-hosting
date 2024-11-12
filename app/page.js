@@ -11,8 +11,8 @@ export default function Home() {
                 <SideBar />
                 <div id="middle-home" className="flex flex-col overflow-hidden gap-5 w-full max-w-[680px]">
                     <Stories />
-                    <div className="h-[100px] text-white p-4 bg-red-400">
-                        <strong>Warning</strong>: please do not enter any personal information inside the post as all other users can view it
+                    <div className="h-[100px] text-white p-4 bg-red-500 flex align-middle justify-center">
+                        Warning: please do not enter any personal information inside the post as all other users can view it
                     </div>
                     <Post />
                 </div>
