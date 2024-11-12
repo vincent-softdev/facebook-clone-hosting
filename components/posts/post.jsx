@@ -69,10 +69,10 @@ const Post = () => {
     if (!user) return <SkeletonPostCard />; // Use skeleton loader if session is unavailable
 
     return (
-        <div>
+        <div className="flex gap-5 flex-col">
             <CreatePost />
             {/* Posts */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-5">
                 {loading && !posts.length ? (
                     // Show skeleton loaders for the initial load
                     Array.from({ length: POSTS_PER_PAGE }).map((_, idx) => (
