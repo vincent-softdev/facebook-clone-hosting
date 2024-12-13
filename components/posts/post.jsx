@@ -22,17 +22,22 @@ const Post = () => {
               <SkeletonPostCard key={idx} />
             ))
           : posts.map((post, index) => {
-              if (index === posts.length - 1) {
-                return (
-                  <PostCard
-                    key={post.id}
-                    post={post}
-                    ref={lastPostElementRef}
-                  />
-                );
-              } else {
-                return <PostCard key={post.id} post={post} />;
-              }
+              return (
+                <PostCard
+                  key={post.id}
+                  post={post}
+                  ref={index === posts.length - 1 ? lastPostElementRef : null}
+                >
+                  <PostCard.Header />
+                  <PostCard.Content />
+                  <PostCard.Footer>
+                    <PostCard.Footer.Actions>
+                      <PostCard.Footer.Actions.Like />
+                      <PostCard.Footer.Actions.Comment />
+                    </PostCard.Footer.Actions>
+                  </PostCard.Footer>
+                </PostCard>
+              );
             })}
 
         {loading && posts.length > 0 && <SkeletonPostCard />}
