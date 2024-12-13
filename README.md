@@ -6,6 +6,10 @@ Facebook Clone is a web application built with Next.js, Firebase, and TailwindCS
 
 This application allows users to add new friends, login, sign up, create new post, see post.
 
+## Design Patterns
+- Compound Components: https://www.smashingmagazine.com/2021/08/compound-components-react/
+- Single Responsibility Principle (SRP): https://www.geeksforgeeks.org/single-responsibility-in-solid-design-principle/
+
 ## Features
 
 - User authentication with Firebase.
