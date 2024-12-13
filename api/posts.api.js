@@ -5,14 +5,7 @@ import {
   arrayUnion,
   arrayRemove,
 } from "firebase/firestore";
-import {
-  collection,
-  query,
-  orderBy,
-  limit,
-  startAfter,
-  getDocs,
-} from "firebase/firestore";
+import { collection, query, orderBy, getDocs } from "firebase/firestore";
 import { db } from "@/app/firebase";
 
 export const toggleLike = async (postId, userId) => {
