@@ -1,11 +1,12 @@
 "use client";
 import { DateFormating } from "@/utils/date.format";
-import React, { createContext, forwardRef, useContext } from "react";
+import React, { createContext, forwardRef, useContext, useState } from "react";
 import { user } from "@/constants/data";
 import { Icons } from "@/icons/icons";
 import { IconImages } from "@/icons/icon_images";
 import { checkLike, toggleLike } from "@/hooks/actions/like.hooks";
 import ReactionButton from "@/components/buttons/reaction_button";
+import PostDetailModal from "@/views/modal/post_detail_modal";
 
 const PostCardContext = createContext();
 
@@ -154,11 +155,32 @@ PostCard.Footer.Actions.Like = function PostCardFooterActionsLike() {
 };
 
 PostCard.Footer.Actions.Comment = function PostCardFooterActionsComment() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className="grow flex cursor-pointer py-1 hover:bg-gray-100 rounded-md justify-center gap-2 items-center">
-      <IconImages.CommentIcon className="h-6 w-6 opacity-60" />
-      <p>Comment</p>
-    </div>
+    <>
+      <div
+        className="grow flex cursor-pointer py-1 hover:bg-gray-100 rounded-md justify-center gap-2 items-center"
+        onClick={openModal}
+      >
+        <IconImages.CommentIcon className="h-6 w-6 opacity-60" />
+        <p>Comment</p>
+      </div>
+      {isModalOpen && (
+        <PostDetailModal
+          closeModal={closeModal}
+          title={`${user.name}'s Post`}
+        />
+      )}
+    </>
   );
 };
 
